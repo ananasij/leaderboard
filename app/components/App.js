@@ -32,8 +32,14 @@ var App = React.createClass({
 
     render: function() {
         var currentLeaderboard = this.state[this.state.currentLeaderboard];
+        var pageContent;
         if (currentLeaderboard) {
-            return (<div>
+            pageContent = <LeaderboardView currentLeaderboard={currentLeaderboard}/>;
+        } else {
+            pageContent = <div>Loading...</div>;
+        }
+        return (
+            <div>
                 <div className="header container-fluid">
                     <img src="https://s3.amazonaws.com/freecodecamp/freecodecamp_logo.svg"
                          alt="freeCodeCamp logo"
@@ -47,21 +53,22 @@ var App = React.createClass({
                             value='leaderboard30d'
                             onClick={this.switchLeaderboard}
                             className="btn-sm btn-link board-switch-btn"
-                        >Past 30 days points</button>
+                        >Past 30 days points
+                        </button>
                         <button
                             type="button"
                             value='leaderboardTotal'
                             onClick={this.switchLeaderboard}
                             className="btn-sm btn-link board-switch-btn"
-                        >All time points</button>
+                        >All time points
+                        </button>
                     </div>
                 </div>
                 <div className="container table-container">
-                    <LeaderboardView currentLeaderboard={currentLeaderboard} />
+                    {pageContent}
                 </div>
-            </div>);
-        }
-        return (<div>Loading...</div>);
+            </div>
+        );
     }
 });
 
