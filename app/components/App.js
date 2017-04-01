@@ -34,14 +34,31 @@ var App = React.createClass({
         var currentLeaderboard = this.state[this.state.currentLeaderboard];
         if (currentLeaderboard) {
             return (<div>
-                Sort by:
-                <button
-                    value='leaderboard30d'
-                    onClick={this.switchLeaderboard} >Past 30 days points</button>
-                <button
-                    value='leaderboardTotal'
-                    onClick={this.switchLeaderboard} >All time points</button>
-                <LeaderboardView currentLeaderboard={currentLeaderboard} />
+                <div className="header container-fluid">
+                    <img src="https://s3.amazonaws.com/freecodecamp/freecodecamp_logo.svg"
+                         alt="freeCodeCamp logo"
+                         className="logo"
+                    />
+                    Leaderboard
+                    <div className="board-switcher">
+                        <span className="sort-title">Sort by:</span>
+                        <button
+                            type="button"
+                            value='leaderboard30d'
+                            onClick={this.switchLeaderboard}
+                            className="btn-sm btn-link board-switch-btn"
+                        >Past 30 days points</button>
+                        <button
+                            type="button"
+                            value='leaderboardTotal'
+                            onClick={this.switchLeaderboard}
+                            className="btn-sm btn-link board-switch-btn"
+                        >All time points</button>
+                    </div>
+                </div>
+                <div className="container table-container">
+                    <LeaderboardView currentLeaderboard={currentLeaderboard} />
+                </div>
             </div>);
         }
         return (<div>Loading...</div>);

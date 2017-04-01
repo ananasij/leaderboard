@@ -10,8 +10,12 @@ var LeaderboardView = React.createClass({
             processedLeaderboard.push(
                 <tr>
                     <td>{rank}</td>
-                    <td><img src={line.img} alt={line.username + "'s userpicture"} className="userimage"/>
-                        <a href={'https://www.freecodecamp.com/' + line.username}>{line.username}</a></td>
+                    <td>
+                        <a href={'https://www.freecodecamp.com/' + line.username} target="_blank">
+                            <img src={line.img} alt={line.username + "'s userpicture"} className="userimage"/>
+                            {line.username}
+                        </a>
+                    </td>
                     <td>{line.recent}</td>
                     <td>{line.alltime}</td>
                 </tr>
@@ -25,10 +29,10 @@ var LeaderboardView = React.createClass({
             <table className="table table-striped">
                 <thead>
                 <tr>
-                    <th>Rank</th>
+                    <th className="th-rank">Rank</th>
                     <th>Camper</th>
-                    <th>Points for past 30 days</th>
-                    <th>Points for all days</th>
+                    <th className="th-30d">Points for past 30 days</th>
+                    <th className="th-total">Points for all days</th>
                 </tr>
                 </thead>
                 <tbody>

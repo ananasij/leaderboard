@@ -3,3 +3,54 @@
     height: 50px;
     margin-right: 15px;
 }
+
+.logo {
+    width: 200px;
+    margin: 10px 10px;
+}
+
+.header {
+    background-color: darkgreen;
+    padding: 10px;
+    color: white;
+    font-size: 24px;
+    font-family: 'Lato', sans-serif;
+}
+
+.board-switcher {
+    display: inline-block;
+    margin: 10px 50px;
+    font-size: small;
+}
+
+.sort-title {
+    color: white;
+}
+
+.board-switch-btn {
+    margin: auto 5px;
+    color: white;
+}
+
+.board-switch-btn:hover,
+.board-switch-btn:active,
+.board-switch-btn:focus {
+    color: #ffac33;
+    outline: none;
+}
+
+.table-container {
+    margin-top: 30px;
+}
+
+.th-rank {
+    width: 10%;
+}
+
+.th-30d {
+    width: 25%;
+}
+
+.th-total {
+    width: 25%;
+}
