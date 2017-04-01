@@ -1,7 +1,8 @@
 var React = require('react');
 
 var LeaderboardView = React.createClass({
-    buildLeaderboard: function(rawLeaderboard) {
+    buildLeaderboard: function() {
+        var rawLeaderboard = this.props.currentLeaderboard;
         var processedLeaderboard = [];
         var rank = 0;
         rawLeaderboard.map(function(line) {
@@ -31,7 +32,7 @@ var LeaderboardView = React.createClass({
                 </tr>
                 </thead>
                 <tbody>
-                {this.buildLeaderboard(this.props.currentLeaderboard)}
+                {this.buildLeaderboard()}
                 </tbody>
             </table>
         </div>;
