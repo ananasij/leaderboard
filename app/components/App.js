@@ -7,22 +7,22 @@ var App = React.createClass({
     },
 
     componentDidMount: function() {
-        var lb30d = fetch('https://fcctop100.herokuapp.com/api/fccusers/top/recent')
-            .then(function(response) {
-                return response.json();
-            });
-        var lbTotal = fetch('https://fcctop100.herokuapp.com/api/fccusers/top/alltime')
-            .then(function(response) {
-                return response.json();
-            });
-
-        Promise
-            .all([lb30d, lbTotal])
-            .then(this.onLeaderboardFetched);
+        this.fetchBoard('https://fcctop100.herokuapp.com/api/fccusers/top/recent', 'leaderboard30d');
+        this.fetchBoard('https://fcctop100.herokuapp.com/api/fccusers/top/alltime', 'leaderboardTotal');
     },
 
-    onLeaderboardFetched: function(jsonArray) {
-        this.setState({ leaderboard30d: jsonArray[0], leaderboardTotal: jsonArray[1] });
+    fetchBoard: function(url, name) {
+        fetch(url)
+            .then(function(response) {
+                return response.json();
+            })
+            .then(onFetched.bind(this));
+
+        function onFetched(json) {
+            var state = {};
+            state[name] = json;
+            this.setState(state);
+        }
     },
 
     switchLeaderboard: function(e) {
